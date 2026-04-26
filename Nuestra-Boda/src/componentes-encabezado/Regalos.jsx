@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Copy } from "lucide-react";
 
 // ✨ Animación
 const fadeUp = {
@@ -14,19 +13,13 @@ const fadeUp = {
 
 const Regalos = () => {
 
-  // 🔥 estados
   const [mostrarModal, setMostrarModal] = useState(false);
-  const [copiado, setCopiado] = useState(false);
 
-  // 📋 copiar cuenta
-  const copiarCuenta = () => {
-    navigator.clipboard.writeText("1234567890123456");
-    setCopiado(true);
+  // 🎁 Número de evento Liverpool
+  const numeroEvento = "12345678";
 
-    setTimeout(() => {
-      setCopiado(false);
-    }, 2000);
-  };
+  // 🔗 Link dinámico Liverpool
+  const linkLiverpool = `https://www.liverpool.com.mx/tienda/giftregistry/giftRegistryDetail.jsp?eventNo=${numeroEvento}`;
 
   return (
     <motion.div
@@ -37,26 +30,33 @@ const Regalos = () => {
       className="flex flex-col items-center justify-center gap-3 h-96 md:h-80 lg:h-[700px]"
     >
       
-      <img className="h-24 w-24 sm:h-28 sm:w-28 p-3" src="/regalo1.png" alt="Regalo" />
+      {/* 🎁 ICONO */}
+      <img
+        className="h-24 w-24 sm:h-28 sm:w-28 p-3"
+        src="/regalo1.png"
+        alt="Regalo"
+      />
 
+      {/* 📝 TITULO */}
       <h1 className="text-xl sm:text-2xl font-bold p-3 font-playfair">
         REGALOS
       </h1>
 
-      <p className="text-lg sm:text-xl p-7 text-center">
-        Ya tenemos pensado el ferrari, la mansión y el velero. 
-        Ahora lo único que nos falta es el dinero 😄
+      {/* 💬 TEXTO */}
+      <p className="text-lg sm:text-xl p-7 text-center max-w-xl">
+        Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros,
+        hemos creado una mesa de regalos en Liverpool 💛
       </p>
 
-      {/* BOTÓN */}
+      {/* 🔘 BOTÓN */}
       <button 
-        className="bg-[#9E8E7B] rounded-md p-3 w-80 h-14 flex items-center justify-center text-lg text-white"
+        className="bg-[#9E8E7B] rounded-md p-3 w-80 h-14 flex items-center justify-center text-lg text-white hover:scale-105 transition"
         onClick={() => setMostrarModal(true)}
       >
-        Ver Datos Bancarios
+        Ver Mesa de Regalos
       </button>
 
-      {/* MODAL */}
+      {/* 🪟 MODAL */}
       <AnimatePresence>
         {mostrarModal && (
           <motion.div
@@ -66,63 +66,69 @@ const Regalos = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
+
+            {/* 💎 TARJETA PREMIUM */}
             <motion.div
-              className="relative w-80 min-h-[260px] rounded-2xl p-5 text-white overflow-hidden shadow-2xl"
+              className="relative w-[340px] min-h-[300px] rounded-3xl p-6 text-white shadow-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
               initial={{ scale: 0.8, opacity: 0, y: 80 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 80 }}
               transition={{ duration: 0.4 }}
               style={{
-                background: "linear-gradient(135deg, #9E8E7B, #5f564c)",
+                background: "linear-gradient(135deg, #9E8E7B, #6e6458)",
               }}
             >
-              {/* brillo */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-30 animate-[shine_3s_infinite]" />
 
-              <div className="flex justify-between items-center">
-                <h2 className="text-sm tracking-widest">SANTANDER</h2>
-                <span className="text-xs opacity-70">VISA</span>
-              </div>
+              {/* ✨ BRILLO */}
+              <div className="absolute inset-0 opacity-20 bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.5),transparent)] animate-[shine_4s_infinite]" />
 
-              <div className="w-10 h-7 bg-yellow-300 rounded-md mt-4 shadow-inner"></div>
+              {/* 💍 CONTENIDO */}
+              <div className="relative z-10 flex flex-col items-center text-center">
 
-              <p className="text-lg tracking-[0.2em] mt-6">
-                1234 5678 9012 3456
-              </p>
-
-              <div className="flex justify-between items-end mt-4 text-xs">
-                <div>
-                  <p className="opacity-70">Titular</p>
-                  <p className="text-sm tracking-wide">JUAN PEREZ</p>
-                </div>
-                <div>
-                  <p className="opacity-70">VENCE</p>
-                  <p>06/30</p>
-                </div>
-              </div>
-
-             <div className="flex justify-end mt-4">
-  <button
-    onClick={copiarCuenta}
-    className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition"
-  >
-    <Copy size={18} />
-  </button>
-</div>
-
-              {copiado && (
-                <p className="absolute bottom-10 left-0 right-0 text-center text-green-200 text-xs">
-                  ✅ Copiado
+                <p className="text-xs tracking-[0.3em] opacity-70">
+                  MESA DE REGALOS
                 </p>
-              )}
 
+                <h2 className="text-2xl font-playfair mt-2">
+                  Liverpool
+                </h2>
+
+                <div className="w-12 h-[1px] bg-white/40 my-4" />
+
+                <p className="text-sm opacity-80">
+                  Número de evento
+                </p>
+
+                <p className="text-3xl tracking-[0.2em] font-semibold mt-2">
+                  {numeroEvento}
+                </p>
+
+                <p className="text-xs mt-4 opacity-70 leading-relaxed px-4">
+                  Hemos seleccionado algunos regalos que nos encantaría recibir.
+                  Puedes ver nuestra mesa dando clic abajo.
+                </p>
+
+                {/* 🔗 BOTÓN LIVERPOOL */}
+                <a
+                  href={linkLiverpool}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 w-full py-3 rounded-xl bg-white text-black font-semibold tracking-wide hover:scale-105 transition-transform duration-300 shadow-lg"
+                >
+                  Ver mesa de regalos
+                </a>
+
+              </div>
+
+              {/* ❌ CERRAR */}
               <button
-                className="absolute top-1 right-3 text-white text-lg"
+                className="absolute top-3 right-4 text-white text-lg opacity-70 hover:opacity-100"
                 onClick={() => setMostrarModal(false)}
               >
                 ✕
               </button>
+
             </motion.div>
           </motion.div>
         )}

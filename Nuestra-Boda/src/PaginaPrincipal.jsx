@@ -47,25 +47,25 @@ export default function PaginaPrincipal() {
   initial="hidden"
   whileInView="show"
   viewport={{ once: true }}
-  className="relative flex flex-col items-center justify-center text-white bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-black py-24 px-6 text-center overflow-hidden"
+  className="relative flex flex-col items-center justify-center text-white bg-gradient-to-b from-[#f7f4f4] to-white py-24 px-6 text-center overflow-hidden"
 >
 
   {/* Glow decorativo sutil */}
-  <div className="absolute w-[500px] h-[500px] bg-[#9E8E7B]/20 rounded-full blur-3xl top-[-100px]"></div>
+  <div className="absolute w-[500px] h-[500px rounded-full blur-3xl top-[-100px]"></div>
   
 
   {/* Contenido */}
   <div className="relative z-10 max-w-3xl">
 
-    <p className="text-base sm:text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
-      "El amor no mira con los ojos, sino con la mente, y por eso al alado Cupido lo pintan ciego."
+    <p className="text-base sm:text-xl md:text-2xl text-black leading-relaxed mb-8">
+      "Te quiero no por quien eres si no por quien soy cuando estoy contigo."
     </p>
 
     {/* Línea elegante */}
     <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#9E8E7B] to-transparent mx-auto my-8"></div>
 
     <p className="text-sm tracking-[0.3em] text-[#9E8E7B] uppercase">
-  William Shakespeare
+  Gabriel Garcia Màrquez
 </p>
 
   </div>
@@ -79,9 +79,9 @@ export default function PaginaPrincipal() {
   initial="hidden"
   whileInView="show"
   viewport={{ once: true }}
-  className="flex items-center justify-center p-6 bg-gradient-to-b from-black via-[#1a1a1a] to-black"
+  className="flex items-center justify-center p-6 bg-gradient-to-b from-white to-black"
 >
-  <div className="bg-white/10  p-10 md:p-12 max-w-lg md:max-w-xl min-h-[400px] md:min-h-[450px] w-full text-center space-y-6 md:space-y-8 transition duration-300 hover:scale-105">
+  <div className="bg-black/70  p-10 md:p-12 max-w-lg md:max-w-xl min-h-[400px] md:min-h-[450px] w-full text-center space-y-6 md:space-y-8 transition duration-300 hover:scale-105">
     
     <h1 className="text-sm tracking-[0.3em] text-[#9E8E7B] font-semibold">
   ¿CUÁNDO?
@@ -184,20 +184,20 @@ export default function PaginaPrincipal() {
   <div className="relative z-10 max-w-3xl">
 
     <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[GreatVibes] bg-clip-text text-transparent bg-gradient-to-r from-[#7f5b45] via-[#d18f81] to-[#a08428] leading-snug mb-4 drop-shadow-xl">
-      "Donde quiera que vayas, iré yo
+      "Sea cual sea la materia de que estan hechas
     </p>
     <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[GreatVibes] bg-clip-text text-transparent bg-gradient-to-r from-[#9d7155] via-[#c1897c] to-[#a08428] leading-snug mb-4 drop-shadow-xl">
-      también.
+      nuestras almas
     </p>
     <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[GreatVibes] bg-clip-text text-transparent bg-gradient-to-r from-[#b27d5c] via-[#a9776c] to-[#a08428] leading-snug mb-12 drop-shadow-xl">
-      Donde te quedes, yo me quedaré."
+      la suya y la mia son iguales."
     </p>
 
     {/* Línea central elegante */}
     <div className="w-48 h-[2px] bg-gradient-to-r from-transparent via-[#E9CFC9] to-transparent mx-auto mb-8 rounded-full shadow-lg"></div>
 
     <p className="text-sm sm:text-base tracking-[0.4em] text-[#9c713b] uppercase font-semibold drop-shadow-md">
-      - LIBRO DE RUT
+      - Emily Bronte
     </p>
   </div>
 

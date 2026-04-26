@@ -186,7 +186,7 @@ export default function Portada() {
           animate={mostrarContenido ? { opacity: 1 } : { opacity: 0 }}
         >
           <h1 className="text-4xl md:text-7xl font-cursiveDancing">
-            María & Jonathan
+            Valeria & Alejandro
           </h1>
 
           <Countdown targetDate="2026-06-11T00:00:00" />
