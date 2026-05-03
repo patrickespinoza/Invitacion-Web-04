@@ -60,7 +60,7 @@ export default function Portada() {
             </p>
 
             <h1 className="text-3xl md:text-5xl font-cursiveDancing mb-2">
-              María & Jonathan
+              Valeria & Alejandro
             </h1>
 
             <p className="mb-10 text-black-400">
