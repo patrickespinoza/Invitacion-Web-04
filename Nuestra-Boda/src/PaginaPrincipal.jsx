@@ -5,6 +5,9 @@ import Itinerario from "./Itinerario";
 import Preguntas from "./Preguntas";
 import Regalos from "./componentes-encabezado/Regalos";
 import Confirmacion from "./componentes-encabezado/Confirmacion";
+import FrasePremium from "./componentes-encabezado/FrasePrincipal";
+import EventoDireccion from "./componentes-encabezado/Ubicacion";
+import DressCodePremium from "./componentes-encabezado/codigovestimenta";
 
 
 export default function PaginaPrincipal() {
@@ -42,103 +45,265 @@ export default function PaginaPrincipal() {
   return (
     <div >
 
-      <motion.div
-  variants={fadeUp}
-  initial="hidden"
-  whileInView="show"
-  viewport={{ once: true }}
-  className="relative flex flex-col items-center justify-center text-white bg-gradient-to-b from-[#f7f4f4] to-white py-24 px-6 text-center overflow-hidden"
->
-
-  {/* Glow decorativo sutil */}
-  <div className="absolute w-[500px] h-[500px rounded-full blur-3xl top-[-100px]"></div>
-  
-
-  {/* Contenido */}
-  <div className="relative z-10 max-w-3xl">
-
-    <p className="text-base sm:text-xl md:text-2xl text-black leading-relaxed mb-8">
-      "Te quiero no por quien eres si no por quien soy cuando estoy contigo."
-    </p>
-
-    {/* Línea elegante */}
-    <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#9E8E7B] to-transparent mx-auto my-8"></div>
-
-    <p className="text-sm tracking-[0.3em] text-[#9E8E7B] uppercase">
-  Gabriel Garcia Màrquez
-</p>
-
-  </div>
-</motion.div>
-
+<FrasePremium/>
 
 {/* Direccion del evento*/}
 
-        <motion.div
+<EventoDireccion/>
+
+ {/* Sección de Momentos */}
+       <motion.section
   variants={fadeUp}
   initial="hidden"
   whileInView="show"
   viewport={{ once: true }}
-  className="flex items-center justify-center p-6 bg-gradient-to-b from-white to-black"
+  className="relative overflow-hidden py-32 px-6"
+  style={{
+    background: `
+      radial-gradient(circle at top left, rgba(255,255,255,0.05), transparent 18%),
+      radial-gradient(circle at bottom right, rgba(255,255,255,0.04), transparent 22%),
+      linear-gradient(
+        145deg,
+        #f8f4ee 0%,
+        #efe4d2 38%,
+        #dcc4a3 100%
+      )
+    `,
+  }}
 >
-  <div className="bg-black/70  p-10 md:p-12 max-w-lg md:max-w-xl min-h-[400px] md:min-h-[450px] w-full text-center space-y-6 md:space-y-8 transition duration-300 hover:scale-105">
-    
-    <h1 className="text-sm tracking-[0.3em] text-[#9E8E7B] font-semibold">
-  ¿CUÁNDO?
-   </h1>
 
-     <div>
-      <p className="text-6xl">📅</p>
-      <p className="text-lg text-gray-300 tracking-wid">DOMINGO, 11 DE JUNIO</p>
-      <div className="w-24 h-[1px] bg-white/20 mx-auto"></div>
-      <p className="text-5xl fond-bold text-white">2026</p>
+  {/* GLOW */}
+  <motion.div
+    className="absolute w-[450px] h-[450px] rounded-full blur-3xl opacity-20"
+    style={{
+      background: "rgba(212,175,55,0.18)",
+      top: "-140px",
+      left: "-120px",
+    }}
+    animate={{
+      scale: [1, 1.12, 1],
+      opacity: [0.15, 0.25, 0.15],
+    }}
+    transition={{
+      duration: 8,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
 
-      <p className="text-lg text-gray-300 tracking-wide">16:30 </p>
-    </div>
+  {/* TEXTURA */}
+  <div
+    className="absolute inset-0 opacity-[0.03]"
+    style={{
+      backgroundImage: `
+        repeating-linear-gradient(
+          45deg,
+          rgba(0,0,0,0.08) 0px,
+          rgba(0,0,0,0.08) 1px,
+          transparent 1px,
+          transparent 6px
+        )
+      `,
+    }}
+  />
 
-    <a
-      href="https://maps.app.goo.gl/TsSDUBKAractwi8F8"
-      target="_blank"
-      className="inline-block mt-4 bg-[#9E8E7B] hover:bg-[#8a7a69] text-white px-6 py-3 rounded-full shadow-md transition duration-300"
+  {/* CONTENIDO */}
+  <div className="relative z-10 max-w-6xl mx-auto text-center">
+
+    {/* SUBTITULO */}
+    <motion.p
+      className="uppercase text-[11px] tracking-[0.55em]"
+      style={{
+        color: "#9b7b52",
+      }}
+      animate={{
+        letterSpacing: ["0.45em", "0.55em", "0.45em"],
+        opacity: [0.7, 1, 0.7],
+      }}
+      transition={{
+        duration: 5,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
     >
-      Ver ubicación
-    </a>
-    <div className="w-24 h-[1px] bg-white/20 mx-auto"></div>
+      NUESTROS MOMENTOS
+    </motion.p>
+
+    {/* TITULO */}
+    <motion.h1
+      className="mt-6 text-[42px] md:text-[72px] leading-none font-cursiveDancing"
+      style={{
+        background: `
+          linear-gradient(
+            180deg,
+            #fffdf8 0%,
+            #f4dfb8 35%,
+            #d4af37 65%,
+            #8f6b1d 100%
+          )
+        `,
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        textShadow: `
+          0 2px 10px rgba(212,175,55,0.12),
+          0 8px 24px rgba(0,0,0,0.08)
+        `,
+      }}
+      animate={{
+        opacity: [0.92, 1, 0.92],
+      }}
+      transition={{
+        duration: 4,
+        repeat: Infinity,
+      }}
+    >
+      Nuestra Historia
+    </motion.h1>
+
+    {/* DETALLE */}
+    <motion.div
+      className="relative flex justify-center items-center my-10"
+      animate={{
+        opacity: [0.7, 1, 0.7],
+      }}
+      transition={{
+        duration: 5,
+        repeat: Infinity,
+      }}
+    >
+
+      <motion.div
+        className="h-[1px]"
+        style={{
+          width: "90px",
+          background:
+            "linear-gradient(to right, transparent, rgba(180,140,80,0.7))",
+        }}
+        animate={{
+          width: ["70px", "95px", "70px"],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+        }}
+      />
+
+      <motion.div
+        className="relative mx-5"
+        animate={{
+          rotate: [0, 4, -4, 0],
+          scale: [1, 1.05, 1],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+        }}
+      >
+
+        <div className="absolute inset-0 blur-xl bg-[#d4af37]/20 scale-150 rounded-full" />
+
+        <div
+          className="relative w-3 h-3 rotate-45"
+          style={{
+            background: `
+              linear-gradient(
+                135deg,
+                #d4af37 0%,
+                #b38728 45%,
+                #7a5a16 100%
+              )
+            `,
+          }}
+        />
+      </motion.div>
+
+      <motion.div
+        className="h-[1px]"
+        style={{
+          width: "90px",
+          background:
+            "linear-gradient(to left, transparent, rgba(180,140,80,0.7))",
+        }}
+        animate={{
+          width: ["70px", "95px", "70px"],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+        }}
+      />
+
+    </motion.div>
+
+    {/* TEXTO */}
+    <motion.p
+      className="max-w-2xl mx-auto text-[15px] md:text-[17px] leading-relaxed"
+      style={{
+        color: "#6f5a40",
+      }}
+      animate={{
+        opacity: [0.75, 1, 0.75],
+      }}
+      transition={{
+        duration: 5,
+        repeat: Infinity,
+      }}
+    >
+      Un recorrido por los momentos más especiales
+      que han marcado nuestra historia juntos.
+    </motion.p>
+
+    {/* CARD CARRUSEL */}
+    <motion.div
+      className="relative mt-20 rounded-[40px] overflow-hidden p-5 md:p-8"
+      style={{
+        background: `
+          linear-gradient(
+            145deg,
+            rgba(255,255,255,0.72),
+            rgba(255,255,255,0.35)
+          )
+        `,
+        backdropFilter: "blur(18px)",
+        border: "1px solid rgba(255,255,255,0.4)",
+        boxShadow: `
+          0 25px 60px rgba(0,0,0,0.12),
+          inset 0 1px 0 rgba(255,255,255,0.6)
+        `,
+      }}
+      animate={{
+        y: [0, -6, 0],
+      }}
+      transition={{
+        duration: 6,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    >
+
+      {/* BRILLO */}
+      <div
+        className="absolute top-0 left-0 w-28 h-full opacity-10"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(255,255,255,0.9), transparent)",
+          transform: "skewX(-20deg)",
+        }}
+      />
+
+      {/* BORDE */}
+      <div className="absolute inset-[10px] rounded-[30px] border border-white/30 pointer-events-none" />
+
+      {/* CARRUSEL */}
+      <div className="relative z-10">
+        <Carousel />
+      </div>
+
+    </motion.div>
+
   </div>
-</motion.div>
 
-        {/* Sección de Momentos */}
-        <motion.div
-  variants={fadeUp}
-  initial="hidden"
-  whileInView="show"
-  viewport={{ once: true }}
-  className="flex items-center justify-center py-12 bg-gray-50"
->
-  <div className="max-w-4xl w-full text-center space-y-6">
-
-    {/* Título */}
-    <h1 className="text-2xl sm:text-4xl font-bold font-playfair tracking-wide">
-      Nuestros Historia
-    </h1>
-
-    {/* Línea decorativa */}
-    <div className="w-20 h-[2px] bg-[#9E8E7B] mx-auto"></div>
-
-    {/* Subtexto */}
-    <p className="text-gray-500 text-sm sm:text-base">
-      Un vistazo a nuestra historia juntos 💛
-    </p>
-
-    {/* Carrusel dentro de card */}
-    <div className="bg-white rounded-3xl shadow-xl p-4 sm:p-6 flex justify-center">
-  <div className="w-full max-w-xl">
-    <Carousel />
-  </div>
-</div>
-
-  </div>
-</motion.div>
+</motion.section>
 
 {/* Seccion de Itinerario  */}
 <div className="bg-white rounded-3xl shadow-xl p-4 sm:p-6 flex justify-center">
@@ -217,58 +382,7 @@ export default function PaginaPrincipal() {
 
    {/* Sección de Vestimenta */}
 
- <motion.div
-  variants={fadeUp}
-  initial="hidden"
-  whileInView="show"
-  viewport={{ once: true }}
-  className="flex items-center justify-center p-6"
->
-  <div className="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-10 max-w-md w-full text-center space-y-6 text-black relative overflow-hidden">
-    
-    {/* Glow sutil detrás */}
-    <div className="absolute top-[-50px] left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-gradient-to-tr from-[#fcd5b5]/40 via-[#f9e1d1]/20 to-transparent rounded-full blur-3xl animate-pulse -z-10"></div>
-
-    <h1 className="text-3xl sm:text-4xl font-bold font-playfair tracking-wide">
-      Detalles
-    </h1>
-
-    <p className="text-lg sm:text-2xl font-[DancingScript]">
-      Código de vestimenta
-    </p>
-
-    {/* Línea decorativa premium */}
-    <div className="w-20 h-[2px] mx-auto bg-gradient-to-r from-transparent via-[#9E8E7B] to-transparent rounded-full"></div>
-
-    {/* Tipo */}
-    <p className="text-2xl sm:text-3xl font-semibold mt-2">
-      Formal
-    </p>
-
-    {/* Descripción */}
-    <p className="text-sm sm:text-base text-gray-600 mt-2">
-      Elegante y acorde a la ocasión. Evita colores demasiado claros.
-    </p>
-
-    {/* Íconos con ligero hover */}
-    <div className="flex justify-center gap-8 mt-4 text-4xl">
-      <span className="hover:scale-110 transition-transform duration-300">🤵</span>
-      <span className="hover:scale-110 transition-transform duration-300">👗</span>
-    </div>
-
-    {/* Línea decorativa premium */}
-    <div className="w-20 h-[2px] mx-auto bg-gradient-to-r from-transparent via-[#9E8E7B] to-transparent rounded-full"></div>
-    
-    <p className="text-lg sm:text-2xl font-[DancingScript]">
-      Evento
-    </p>
-
-    <p className="text-sm sm:text-base text-gray-600 mt-2">
-      Solo para adultos
-    </p>
-
-  </div>
-</motion.div>
+ <DressCodePremium/>
 
  {/* Sección de Album Compartido */}
 
