@@ -320,53 +320,89 @@ export default function Portada() {
   />
 
   {/* CARTA INTERNA */}
-  <motion.div
-    className="absolute left-1/2 top-[10%] -translate-x-1/2 w-[82%] h-[78%] rounded-[18px] z-10"
-    style={{
-      background: `
-        linear-gradient(
-          180deg,
-          #fffdf8 0%,
-          #f5eee2 100%
-        )
-      `,
-      boxShadow: `
-        0 10px 30px rgba(0,0,0,0.18),
-        inset 0 1px 0 rgba(255,255,255,0.8)
-      `,
-    }}
-    animate={
-      abrirSobre
-        ? {
-            y: -70,
-            scale: 1.02,
-          }
-        : {
-            y: 0,
-            scale: 1,
-          }
-    }
-    transition={{
-      duration: 1.2,
-      ease: [0.22, 1, 0.36, 1],
-    }}
+<motion.div
+  className="absolute left-1/2 top-[10%] -translate-x-1/2 w-[82%] h-[78%] rounded-[18px] z-10 overflow-hidden flex flex-col items-center justify-between py-5 sm:py-6 px-4"
+  style={{
+    background: `
+      linear-gradient(
+        180deg,
+        #fffdf8 0%,
+        #f5eee2 100%
+      )
+    `,
+    boxShadow: `
+      0 10px 30px rgba(0,0,0,0.18),
+      inset 0 1px 0 rgba(255,255,255,0.8)
+    `,
+  }}
+  animate={
+    abrirSobre
+      ? {
+          y: -70,
+          scale: 1.02,
+        }
+      : {
+          y: 0,
+          scale: 1,
+        }
+  }
+  transition={{
+    duration: 1.2,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+>
+
+  {/* DECORACIÓN */}
+  <div className="w-12 sm:w-16 h-[2px] bg-[#d4af37]/60 mt-1" />
+
+  {/* TEXTO SUPERIOR */}
+  <p
+    className="
+      text-center
+      text-[8px]
+      sm:text-[11px]
+      tracking-[0.25em]
+      sm:tracking-[0.4em]
+      text-[#b08b2d]
+      whitespace-nowrap
+    "
   >
+    INVITACIÓN
+  </p>
 
-    {/* DECORACIÓN CARTA */}
-    <div className="absolute top-4 sm:top-5 left-1/2 -translate-x-1/2 w-12 sm:w-16 h-[2px] bg-[#d4af37]/60" />
+  {/* NOMBRES */}
+  <div className="flex flex-col items-center justify-center leading-none">
 
-    <p className="absolute top-8 sm:top-10 w-full text-center text-[9px] sm:text-[11px] tracking-[0.3em] sm:tracking-[0.4em] text-[#b08b2d]">
-      INVITACIÓN
-    </p>
-
-    <h3 className="absolute top-[55px] sm:top-[72px] w-full text-center text-[20px] sm:text-[28px] font-cursiveDancing text-[#3d2d1f] px-2">
-      Valeria & Alejandro
+    <h3 className="text-[20px] sm:text-[28px] font-cursiveDancing text-[#3d2d1f] text-center">
+      Valeria
     </h3>
 
-    <p className="absolute bottom-6 sm:bottom-8 w-full text-center text-[9px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.3em] text-[#8b7355]">
-      TOUCH TO OPEN
-    </p>
-  </motion.div>
+    <span className="text-[#b08b2d] text-[14px] sm:text-[18px] my-1">
+      &
+    </span>
+
+    <h3 className="text-[20px] sm:text-[28px] font-cursiveDancing text-[#3d2d1f] text-center">
+      Alejandro
+    </h3>
+
+  </div>
+
+  {/* TEXTO INFERIOR */}
+  <p
+    className="
+      text-center
+      text-[8px]
+      sm:text-[11px]
+      tracking-[0.18em]
+      sm:tracking-[0.3em]
+      text-[#8b7355]
+      whitespace-nowrap
+    "
+  >
+    TOUCH TO OPEN
+  </p>
+
+</motion.div>
 
   {/* SELLO */}
   <motion.div
