@@ -91,7 +91,7 @@ export default function Portada() {
         {introActiva && (
 
           <motion.div
-  className="fixed inset-0 flex flex-col items-center justify-center text-center px-6 z-50 pt-24 overflow-hidden"
+  className="fixed inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 z-50 pt-16 sm:pt-24 overflow-hidden"
   style={{
   background: `
     radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 20%),
@@ -107,15 +107,15 @@ export default function Portada() {
 >
 
             {/* TEXTOS PREMIUM */}
-<div className="relative mb-12">
+<div className="relative mb-10 sm:mb-12">
 
   {/* LÍNEA DECORATIVA */}
-  <div className="flex items-center justify-center gap-4 mb-5">
+  <div className="flex items-center justify-center gap-3 sm:gap-4 mb-5">
 
-    <div className="w-14 h-[1px] bg-gradient-to-r from-transparent to-[#c8a96b]" />
+    <div className="w-10 sm:w-14 h-[1px] bg-gradient-to-r from-transparent to-[#c8a96b]" />
 
     <p
-      className="text-[11px] md:text-xs uppercase tracking-[0.55em] font-light"
+      className="text-[10px] sm:text-[11px] md:text-xs uppercase tracking-[0.45em] sm:tracking-[0.55em] font-light"
       style={{
         color: "#8b7355",
         textShadow: "0 1px 2px rgba(255,255,255,0.4)",
@@ -124,13 +124,13 @@ export default function Portada() {
       NUESTRA BODA
     </p>
 
-    <div className="w-14 h-[1px] bg-gradient-to-l from-transparent to-[#c8a96b]" />
+    <div className="w-10 sm:w-14 h-[1px] bg-gradient-to-l from-transparent to-[#c8a96b]" />
 
   </div>
 
   {/* NOMBRES */}
   <h1
-    className="text-[52px] md:text-[78px] leading-none font-cursiveDancing"
+    className="text-[42px] sm:text-[52px] md:text-[78px] leading-none font-cursiveDancing"
     style={{
       background: `
         linear-gradient(
@@ -157,7 +157,7 @@ export default function Portada() {
   <div className="flex justify-center my-1">
 
     <span
-      className="text-[22px] md:text-[28px] italic"
+      className="text-[18px] sm:text-[22px] md:text-[28px] italic"
       style={{
         color: "#b08b2d",
         textShadow: "0 2px 8px rgba(0,0,0,0.15)",
@@ -170,7 +170,7 @@ export default function Portada() {
 
   {/* SEGUNDO NOMBRE */}
   <h1
-    className="text-[52px] md:text-[78px] leading-none font-cursiveDancing"
+    className="text-[42px] sm:text-[52px] md:text-[78px] leading-none font-cursiveDancing"
     style={{
       background: `
         linear-gradient(
@@ -194,12 +194,12 @@ export default function Portada() {
   </h1>
 
   {/* FECHA */}
-  <div className="mt-6 flex flex-col items-center">
+  <div className="mt-5 sm:mt-6 flex flex-col items-center">
 
-    <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#c8a96b] to-transparent mb-4" />
+    <div className="w-20 sm:w-24 h-[1px] bg-gradient-to-r from-transparent via-[#c8a96b] to-transparent mb-4" />
 
     <p
-      className="text-[13px] md:text-[14px] tracking-[0.45em] uppercase"
+      className="text-[11px] sm:text-[13px] md:text-[14px] tracking-[0.3em] sm:tracking-[0.45em] uppercase"
       style={{
         color: "#7a6447",
         textShadow: "0 1px 2px rgba(255,255,255,0.3)",
@@ -214,7 +214,7 @@ export default function Portada() {
             {/* SOBRE PREMIUM */}
 <div
   onClick={iniciarExperiencia}
-  className="relative w-[340px] h-[240px] cursor-pointer group"
+  className="relative w-[92vw] max-w-[340px] aspect-[340/240] cursor-pointer group"
   style={{ perspective: 2200 }}
 >
 
@@ -222,7 +222,7 @@ export default function Portada() {
   <div className="absolute inset-0 rounded-[28px] bg-[#d4af37]/20 blur-3xl scale-110 opacity-60" />
 
   {/* SOMBRA */}
-  <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-72 h-16 bg-black/25 blur-3xl rounded-full" />
+  <div className="absolute -bottom-8 sm:-bottom-10 left-1/2 -translate-x-1/2 w-[70%] h-14 sm:h-16 bg-black/25 blur-3xl rounded-full" />
 
   {/* CUERPO PRINCIPAL */}
   <div
@@ -321,7 +321,7 @@ export default function Portada() {
 
   {/* CARTA INTERNA */}
   <motion.div
-    className="absolute left-1/2 top-10 -translate-x-1/2 w-[82%] h-[78%] rounded-[18px] z-10"
+    className="absolute left-1/2 top-[10%] -translate-x-1/2 w-[82%] h-[78%] rounded-[18px] z-10"
     style={{
       background: `
         linear-gradient(
@@ -353,17 +353,17 @@ export default function Portada() {
   >
 
     {/* DECORACIÓN CARTA */}
-    <div className="absolute top-5 left-1/2 -translate-x-1/2 w-16 h-[2px] bg-[#d4af37]/60" />
+    <div className="absolute top-4 sm:top-5 left-1/2 -translate-x-1/2 w-12 sm:w-16 h-[2px] bg-[#d4af37]/60" />
 
-    <p className="absolute top-10 w-full text-center text-[11px] tracking-[0.4em] text-[#b08b2d]">
+    <p className="absolute top-8 sm:top-10 w-full text-center text-[9px] sm:text-[11px] tracking-[0.3em] sm:tracking-[0.4em] text-[#b08b2d]">
       INVITACIÓN
     </p>
 
-    <h3 className="absolute top-[72px] w-full text-center text-[28px] font-cursiveDancing text-[#3d2d1f]">
+    <h3 className="absolute top-[55px] sm:top-[72px] w-full text-center text-[20px] sm:text-[28px] font-cursiveDancing text-[#3d2d1f] px-2">
       Valeria & Alejandro
     </h3>
 
-    <p className="absolute bottom-8 w-full text-center text-[11px] tracking-[0.3em] text-[#8b7355]">
+    <p className="absolute bottom-6 sm:bottom-8 w-full text-center text-[9px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.3em] text-[#8b7355]">
       TOUCH TO OPEN
     </p>
   </motion.div>
@@ -386,7 +386,7 @@ export default function Portada() {
     }
     transition={{ duration: 0.6 }}
   >
-    <div className="relative w-28 h-28 flex items-center justify-center">
+    <div className="relative w-20 h-20 sm:w-28 sm:h-28 flex items-center justify-center">
 
       {/* GLOW */}
       <div className="absolute inset-0 rounded-full bg-[#d4af37]/30 blur-2xl scale-125" />
@@ -409,7 +409,7 @@ export default function Portada() {
 
       {/* LETRA */}
       <div
-        className="relative z-10 text-[34px] font-serif"
+        className="relative z-10 text-[26px] sm:text-[34px] font-serif"
         style={{
           color: "#6e5500",
           textShadow: `
@@ -426,25 +426,24 @@ export default function Portada() {
 
   {/* TEXTO */}
   <motion.div
-    className="absolute inset-0 flex items-start justify-center pt-6 z-40"
+    className="absolute inset-0 flex items-start justify-center pt-4 sm:pt-6 z-40"
     animate={abrirSobre ? { opacity: 0 } : { opacity: 1 }}
   >
-    <p className="text-white/75 tracking-[0.45em] text-[11px] font-light">
+    <p className="text-white/75 tracking-[0.3em] sm:tracking-[0.45em] text-[9px] sm:text-[11px] font-light">
       ABRIR
     </p>
   </motion.div>
 </div>
 
             {/* PASES */}
-           {/* PASES PREMIUM */}
-<div className="mt-12 flex flex-col items-center">
+<div className="mt-10 sm:mt-12 flex flex-col items-center">
 
   {/* LÍNEA SUPERIOR */}
-  <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#c8a96b] to-transparent mb-5" />
+  <div className="w-20 sm:w-24 h-[1px] bg-gradient-to-r from-transparent via-[#c8a96b] to-transparent mb-5" />
 
   {/* TEXTO */}
   <p
-    className="text-[11px] md:text-xs tracking-[0.55em] uppercase"
+    className="text-[10px] sm:text-[11px] md:text-xs tracking-[0.45em] sm:tracking-[0.55em] uppercase"
     style={{
       color: "#8b7355",
       textShadow: "0 1px 2px rgba(255,255,255,0.35)",
@@ -460,7 +459,7 @@ export default function Portada() {
     <div className="absolute inset-0 blur-2xl bg-[#d4af37]/20 scale-150 rounded-full" />
 
     <span
-      className="relative text-[56px] md:text-[68px] leading-none font-light"
+      className="relative text-[46px] sm:text-[56px] md:text-[68px] leading-none font-light"
       style={{
         background: `
           linear-gradient(
@@ -486,7 +485,7 @@ export default function Portada() {
 
   {/* SUBTEXTO */}
   <p
-    className="text-[11px] md:text-xs tracking-[0.45em] uppercase"
+    className="text-[10px] sm:text-[11px] md:text-xs tracking-[0.35em] sm:tracking-[0.45em] uppercase text-center"
     style={{
       color: "#7a6447",
       textShadow: "0 1px 2px rgba(255,255,255,0.25)",
@@ -500,7 +499,7 @@ export default function Portada() {
 
   {/* INVITADO */}
   <div
-    className="px-5 py-2 rounded-full border backdrop-blur-md"
+    className="px-4 sm:px-5 py-2 rounded-full border backdrop-blur-md max-w-[92vw]"
     style={{
       background: "rgba(255,255,255,0.18)",
       borderColor: "rgba(255,255,255,0.25)",
@@ -511,7 +510,7 @@ export default function Portada() {
     }}
   >
     <p
-      className="text-[12px] md:text-[13px] tracking-[0.18em]"
+      className="text-[11px] sm:text-[12px] md:text-[13px] tracking-[0.12em] sm:tracking-[0.18em] text-center break-words"
       style={{
         color: "#6f5a40",
       }}
