@@ -319,7 +319,7 @@ const DressCodePremium = () => {
                 backdropFilter: "blur(12px)",
               }}
             >
-              <span className="text-[48px]">🤵🏻</span>
+              <img src="/dresscodeh.png" alt="traje" />
             </div>
 
             <p
@@ -368,7 +368,7 @@ const DressCodePremium = () => {
                 backdropFilter: "blur(12px)",
               }}
             >
-              <span className="text-[48px]">👗</span>
+              <img src="./dresscodem.png" alt="vestido" />
             </div>
 
             <p

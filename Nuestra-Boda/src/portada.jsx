@@ -596,7 +596,7 @@ export default function Portada() {
             Valeria & Alejandro
           </h1>
 
-          <Countdown targetDate="2026-06-11T00:00:00" />
+          <Countdown targetDate="2027-06-11T00:00:00" />
         </motion.div>
 
       </div>
