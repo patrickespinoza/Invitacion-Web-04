@@ -1,8 +1,8 @@
+import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 /* =========================================
-   MESA DE REGALOS — ESTILO CLÁSICO
+   FRASE EN MODAL — ESTILO CLÁSICO
 ========================================= */
 
 const palette = {
@@ -31,44 +31,34 @@ const fadeUp = {
   },
 };
 
-/* =========================================
-   ORNAMENTO DE ESQUINA
-========================================= */
-
-function CornerOrnament({ className = "" }) {
+function DecorativeDivider() {
   return (
-    <svg
-      viewBox="0 0 90 90"
-      fill="none"
-      aria-hidden="true"
-      className={className}
-    >
-      <path
-        d="M5 85V30C5 16.2 16.2 5 30 5h55"
-        stroke="currentColor"
-        strokeWidth="1"
+    <div className="flex items-center justify-center gap-3">
+      <span
+        className="h-px w-10 sm:w-16"
+        style={{
+          background:
+            "linear-gradient(to right, transparent, rgba(164,134,84,0.72))",
+        }}
       />
 
-      <path
-        d="M15 72V34c0-10.5 8.5-19 19-19h38"
-        stroke="currentColor"
-        strokeWidth="0.65"
+      <span
+        className="h-[5px] w-[5px] rotate-45 border"
+        style={{
+          borderColor: "rgba(164,134,84,0.72)",
+        }}
       />
 
-      <path
-        d="M30 5C30 18.8 18.8 30 5 30"
-        stroke="currentColor"
-        strokeWidth="0.75"
+      <span
+        className="h-px w-10 sm:w-16"
+        style={{
+          background:
+            "linear-gradient(to left, transparent, rgba(164,134,84,0.72))",
+        }}
       />
-
-      <circle cx="15" cy="15" r="2" fill="currentColor" />
-    </svg>
+    </div>
   );
 }
-
-/* =========================================
-   RAMA BOTÁNICA
-========================================= */
 
 function BotanicalBranch({ className = "" }) {
   return (
@@ -140,44 +130,7 @@ function BotanicalBranch({ className = "" }) {
   );
 }
 
-/* =========================================
-   SEPARADOR
-========================================= */
-
-function DecorativeDivider({ compact = false }) {
-  return (
-    <div className="flex items-center justify-center gap-3">
-      <span
-        className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
-        style={{
-          background:
-            "linear-gradient(to right, transparent, rgba(164,134,84,0.72))",
-        }}
-      />
-
-      <span
-        className="h-[5px] w-[5px] rotate-45 border"
-        style={{
-          borderColor: "rgba(164,134,84,0.72)",
-        }}
-      />
-
-      <span
-        className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
-        style={{
-          background:
-            "linear-gradient(to left, transparent, rgba(164,134,84,0.72))",
-        }}
-      />
-    </div>
-  );
-}
-
-/* =========================================
-   ICONOS
-========================================= */
-
-function GiftIcon({ className = "h-6 w-6" }) {
+function QuoteIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -187,32 +140,12 @@ function GiftIcon({ className = "h-6 w-6" }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
-      className={className}
+      className="h-5 w-5"
     >
-      <rect x="3" y="8" width="18" height="13" />
-      <path d="M12 8v13" />
-      <path d="M3 12h18" />
-      <path d="M7.5 8C5.6 8 4 6.7 4 5.2 4 4 5 3 6.3 3 9.2 3 12 8 12 8" />
-      <path d="M16.5 8C18.4 8 20 6.7 20 5.2 20 4 19 3 17.7 3 14.8 3 12 8 12 8" />
-    </svg>
-  );
-}
-
-function ExternalLinkIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className="h-4 w-4"
-    >
-      <path d="M14 5h5v5" />
-      <path d="m19 5-8 8" />
-      <path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5" />
+      <path d="M9 11H5.5A2.5 2.5 0 0 0 3 13.5V18h6v-7Z" />
+      <path d="M21 11h-3.5a2.5 2.5 0 0 0-2.5 2.5V18h6v-7Z" />
+      <path d="M9 11c0-3.2-1.2-5.3-3.6-6.5" />
+      <path d="M21 11c0-3.2-1.2-5.3-3.6-6.5" />
     </svg>
   );
 }
@@ -234,42 +167,31 @@ function CloseIcon() {
   );
 }
 
-/* =========================================
-   COMPONENTE PRINCIPAL
-========================================= */
-
-const Regalos = () => {
-  const [mostrarModal, setMostrarModal] = useState(false);
-
-  const numeroEvento = "12345678";
-
-  const linkLiverpool = `https://www.liverpool.com.mx/tienda/giftregistry/giftRegistryDetail.jsp?eventNo=${numeroEvento}`;
+export default function FraseModal() {
+  const [modalAbierto, setModalAbierto] = useState(false);
 
   /* BLOQUEAR SCROLL CUANDO EL MODAL ESTÁ ABIERTO */
 
   useEffect(() => {
-    if (!mostrarModal) return undefined;
+    if (!modalAbierto) return undefined;
 
-    const bodyOverflowAnterior = document.body.style.overflow;
-    const htmlOverflowAnterior = document.documentElement.style.overflow;
+    const overflowAnterior = document.body.style.overflow;
 
     document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = bodyOverflowAnterior;
-      document.documentElement.style.overflow = htmlOverflowAnterior;
+      document.body.style.overflow = overflowAnterior;
     };
-  }, [mostrarModal]);
+  }, [modalAbierto]);
 
   /* CERRAR CON ESCAPE */
 
   useEffect(() => {
-    if (!mostrarModal) return undefined;
+    if (!modalAbierto) return undefined;
 
     const cerrarConEscape = (event) => {
       if (event.key === "Escape") {
-        setMostrarModal(false);
+        setModalAbierto(false);
       }
     };
 
@@ -278,7 +200,7 @@ const Regalos = () => {
     return () => {
       window.removeEventListener("keydown", cerrarConEscape);
     };
-  }, [mostrarModal]);
+  }, [modalAbierto]);
 
   return (
     <>
@@ -292,18 +214,20 @@ const Regalos = () => {
         whileInView="show"
         viewport={{
           once: true,
-          amount: 0.12,
+          amount: 0.2,
         }}
         className="
           relative
           flex
-          min-h-[680px]
+          min-h-[520px]
           w-full
           items-center
           justify-center
           overflow-hidden
-          px-5
+          px-6
           py-24
+          text-center
+          sm:min-h-[600px]
           sm:px-8
           sm:py-28
           lg:px-12
@@ -314,7 +238,7 @@ const Regalos = () => {
             linear-gradient(
               180deg,
               ${palette.paperLight} 0%,
-              ${palette.paper} 56%,
+              ${palette.paper} 58%,
               ${palette.paperDark} 100%
             )
           `,
@@ -372,88 +296,20 @@ const Regalos = () => {
           }}
         />
 
-        {/* ORNAMENTOS */}
-
-        <CornerOrnament
-          className="
-            pointer-events-none
-            absolute
-            left-6
-            top-6
-            h-16
-            w-16
-            text-[#A48654]/25
-            sm:left-9
-            sm:top-9
-            sm:h-20
-            sm:w-20
-          "
-        />
-
-        <CornerOrnament
-          className="
-            pointer-events-none
-            absolute
-            right-6
-            top-6
-            h-16
-            w-16
-            rotate-90
-            text-[#A48654]/25
-            sm:right-9
-            sm:top-9
-            sm:h-20
-            sm:w-20
-          "
-        />
-
-        <CornerOrnament
-          className="
-            pointer-events-none
-            absolute
-            bottom-6
-            left-6
-            h-16
-            w-16
-            -rotate-90
-            text-[#A48654]/25
-            sm:bottom-9
-            sm:left-9
-            sm:h-20
-            sm:w-20
-          "
-        />
-
-        <CornerOrnament
-          className="
-            pointer-events-none
-            absolute
-            bottom-6
-            right-6
-            h-16
-            w-16
-            rotate-180
-            text-[#A48654]/25
-            sm:bottom-9
-            sm:right-9
-            sm:h-20
-            sm:w-20
-          "
-        />
+        {/* RAMAS DECORATIVAS */}
 
         <BotanicalBranch
           className="
             pointer-events-none
             absolute
-            -bottom-16
+            -bottom-14
             -left-8
             h-[250px]
             w-[145px]
             -rotate-12
-            text-[#A48654]/10
+            text-[#A48654]/12
             sm:h-[310px]
             sm:w-[180px]
-            lg:left-2
           "
         />
 
@@ -466,10 +322,9 @@ const Regalos = () => {
             h-[250px]
             w-[145px]
             rotate-[168deg]
-            text-[#A48654]/10
+            text-[#A48654]/12
             sm:h-[310px]
             sm:w-[180px]
-            lg:right-2
           "
         />
 
@@ -481,48 +336,13 @@ const Regalos = () => {
             z-10
             mx-auto
             flex
-            w-full
-            max-w-4xl
+            max-w-3xl
             flex-col
             items-center
-            text-center
           "
         >
-          <motion.div
-            className="
-              flex
-              h-16
-              w-16
-              items-center
-              justify-center
-              rounded-full
-              border
-              sm:h-20
-              sm:w-20
-            "
-            style={{
-              color: palette.antiqueGoldDark,
-              borderColor: "rgba(164,134,84,0.42)",
-            }}
-            initial={{
-              opacity: 0,
-              scale: 0.92,
-            }}
-            whileInView={{
-              opacity: 1,
-              scale: 1,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.8,
-            }}
-          >
-            <GiftIcon className="h-7 w-7 sm:h-8 sm:w-8" />
-          </motion.div>
-
           <motion.p
             className="
-              mt-7
               text-[8px]
               uppercase
               tracking-[0.44em]
@@ -543,10 +363,9 @@ const Regalos = () => {
             viewport={{ once: true }}
             transition={{
               duration: 0.8,
-              delay: 0.08,
             }}
           >
-            Un detalle para nuestro hogar
+            Palabras que nos representan
           </motion.p>
 
           <div className="mt-5">
@@ -557,12 +376,12 @@ const Regalos = () => {
             className="
               mt-8
               font-serif
-              text-[40px]
+              text-[39px]
               font-normal
               leading-tight
               tracking-[-0.025em]
-              sm:text-[54px]
-              md:text-[64px]
+              sm:text-[53px]
+              md:text-[62px]
             "
             style={{
               color: palette.ink,
@@ -578,23 +397,22 @@ const Regalos = () => {
             viewport={{ once: true }}
             transition={{
               duration: 0.9,
-              delay: 0.12,
+              delay: 0.1,
             }}
           >
-            Mesa de regalos
+            Una frase para nuestra historia
           </motion.h2>
 
           <motion.p
             className="
               mx-auto
               mt-6
-              max-w-2xl
+              max-w-xl
               font-serif
               text-[15px]
               italic
               leading-7
-              sm:text-[17px]
-              sm:leading-8
+              sm:text-base
             "
             style={{
               color: palette.warmGray,
@@ -613,89 +431,24 @@ const Regalos = () => {
               delay: 0.18,
             }}
           >
-            Su presencia en este día es el regalo más importante para nosotros.
-            Para quienes deseen tener un detalle adicional, hemos preparado una
-            mesa de regalos en Liverpool.
+            Hay palabras que parecen haber sido escritas para describir aquello
+            que sentimos cuando estamos juntos.
           </motion.p>
-
-          {/* INFORMACIÓN BREVE */}
-
-          <motion.div
-            className="
-              mx-auto
-              mt-10
-              w-full
-              max-w-xl
-              border-y
-              px-5
-              py-7
-              sm:mt-12
-              sm:px-10
-            "
-            style={{
-              borderColor: "rgba(164,134,84,0.3)",
-            }}
-            initial={{
-              opacity: 0,
-              y: 14,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.85,
-              delay: 0.24,
-            }}
-          >
-            <p
-              className="
-                text-[8px]
-                uppercase
-                tracking-[0.38em]
-                sm:text-[9px]
-              "
-              style={{
-                color: palette.antiqueGoldDark,
-              }}
-            >
-              Liverpool
-            </p>
-
-            <p
-              className="
-                mt-4
-                font-serif
-                text-[15px]
-                leading-7
-                sm:text-base
-              "
-              style={{
-                color: palette.inkSoft,
-              }}
-            >
-              Consulta el número de evento y el acceso directo dentro de
-              nuestra tarjeta de regalos.
-            </p>
-          </motion.div>
-
-          {/* BOTÓN */}
 
           <motion.button
             type="button"
-            onClick={() => setMostrarModal(true)}
+            onClick={() => setModalAbierto(true)}
             className="
               mt-10
               inline-flex
-              min-w-[240px]
+              min-w-[230px]
               items-center
               justify-center
               gap-3
               border
               px-8
               py-4
-              sm:min-w-[280px]
+              sm:min-w-[260px]
               sm:px-10
             "
             style={{
@@ -712,7 +465,7 @@ const Regalos = () => {
               scale: 0.985,
             }}
           >
-            <GiftIcon className="h-4 w-4" />
+            <QuoteIcon />
 
             <span
               className="
@@ -723,7 +476,7 @@ const Regalos = () => {
                 sm:tracking-[0.34em]
               "
             >
-              Ver mesa de regalos
+              Leer nuestra frase
             </span>
           </motion.button>
         </div>
@@ -734,7 +487,7 @@ const Regalos = () => {
       ========================================= */}
 
       <AnimatePresence>
-        {mostrarModal && (
+        {modalAbierto && (
           <motion.div
             className="
               fixed
@@ -746,9 +499,9 @@ const Regalos = () => {
               items-center
               justify-center
               overflow-hidden
-              bg-[#111820]/78
+              bg-[#111820]/75
               px-4
-              py-5
+              py-6
               backdrop-blur-sm
               sm:px-8
             "
@@ -766,32 +519,35 @@ const Regalos = () => {
             }}
             onMouseDown={(event) => {
               if (event.target === event.currentTarget) {
-                setMostrarModal(false);
+                setModalAbierto(false);
               }
             }}
             role="dialog"
             aria-modal="true"
-            aria-labelledby="gift-modal-title"
+            aria-labelledby="titulo-frase-modal"
           >
             <motion.div
               className="
                 relative
-                max-h-[92dvh]
+                flex
+                max-h-[90dvh]
                 w-full
-                max-w-2xl
+                max-w-4xl
+                flex-col
+                items-center
                 overflow-y-auto
                 border
-                px-6
-                py-14
+                px-7
+                py-16
                 text-center
-                sm:px-10
-                sm:py-16
-                md:px-14
+                sm:px-12
+                sm:py-20
+                lg:px-20
               "
               style={{
                 backgroundColor: palette.paperLight,
-                borderColor: "rgba(164,134,84,0.48)",
-                boxShadow: "0 30px 100px rgba(0,0,0,0.34)",
+                borderColor: "rgba(164,134,84,0.45)",
+                boxShadow: "0 30px 100px rgba(0,0,0,0.32)",
               }}
               initial={{
                 opacity: 0,
@@ -813,6 +569,20 @@ const Regalos = () => {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
+              {/* BORDE INTERIOR */}
+
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-[7px]
+                  border
+                "
+                style={{
+                  borderColor: "rgba(164,134,84,0.15)",
+                }}
+              />
+
               {/* TEXTURA */}
 
               <div
@@ -835,31 +605,17 @@ const Regalos = () => {
                 }}
               />
 
-              {/* BORDE INTERIOR */}
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-[7px]
-                  border
-                "
-                style={{
-                  borderColor: "rgba(164,134,84,0.15)",
-                }}
-              />
-
               {/* CERRAR */}
 
               <motion.button
                 type="button"
-                onClick={() => setMostrarModal(false)}
-                aria-label="Cerrar mesa de regalos"
+                onClick={() => setModalAbierto(false)}
+                aria-label="Cerrar frase"
                 className="
                   absolute
                   right-4
                   top-4
-                  z-30
+                  z-20
                   flex
                   h-10
                   w-10
@@ -872,7 +628,7 @@ const Regalos = () => {
                 "
                 style={{
                   color: palette.ink,
-                  borderColor: "rgba(164,134,84,0.42)",
+                  borderColor: "rgba(164,134,84,0.4)",
                 }}
                 whileHover={{
                   scale: 1.04,
@@ -885,7 +641,7 @@ const Regalos = () => {
                 <CloseIcon />
               </motion.button>
 
-              {/* CONTENIDO */}
+              {/* CONTENIDO DEL MODAL */}
 
               <div
                 className="
@@ -897,64 +653,87 @@ const Regalos = () => {
                   items-center
                 "
               >
-                <div
-                  className="
-                    flex
-                    h-14
-                    w-14
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                  "
-                  style={{
-                    color: palette.antiqueGoldDark,
-                    borderColor: "rgba(164,134,84,0.42)",
-                  }}
-                >
-                  <GiftIcon />
-                </div>
-
                 <p
                   className="
-                    mt-6
                     text-[8px]
                     uppercase
                     tracking-[0.42em]
-                    sm:text-[9px]
+                    sm:text-[10px]
                   "
                   style={{
                     color: palette.antiqueGoldDark,
                   }}
                 >
-                  Mesa de regalos
+                  Una historia de amor
                 </p>
 
                 <div className="mt-5">
                   <DecorativeDivider />
                 </div>
 
-                <h2
-                  id="gift-modal-title"
+                <span
                   className="
-                    mt-7
+                    mt-8
+                    block
                     font-serif
-                    text-[36px]
+                    text-[72px]
+                    leading-[0.6]
+                    sm:text-[90px]
+                  "
+                  style={{
+                    color: "rgba(164,134,84,0.25)",
+                  }}
+                >
+                  “
+                </span>
+
+                <blockquote
+                  id="titulo-frase-modal"
+                  className="
+                    mx-auto
+                    mt-5
+                    max-w-3xl
+                    font-serif
+                    text-[27px]
                     font-normal
+                    leading-[1.55]
                     tracking-[-0.02em]
-                    sm:text-[46px]
+                    sm:text-[37px]
+                    sm:leading-[1.5]
+                    md:text-[43px]
                   "
                   style={{
                     color: palette.ink,
                   }}
                 >
-                  Liverpool
-                </h2>
+                  Sea cual sea la materia de que están hechas nuestras almas,
+                  <span className="block">
+                    la suya y la mía son iguales.
+                  </span>
+                </blockquote>
+
+                <div className="my-9 sm:my-11">
+                  <DecorativeDivider />
+                </div>
 
                 <p
                   className="
-                    mx-auto
-                    mt-5
+                    text-[9px]
+                    uppercase
+                    tracking-[0.3em]
+                    sm:text-[11px]
+                    sm:tracking-[0.42em]
+                  "
+                  style={{
+                    color: palette.warmGray,
+                  }}
+                >
+                  Emily Brontë
+                </p>
+
+                <p
+                  className="
+                    mt-9
                     max-w-lg
                     font-serif
                     text-[14px]
@@ -963,125 +742,11 @@ const Regalos = () => {
                     sm:text-base
                   "
                   style={{
-                    color: palette.warmGray,
-                  }}
-                >
-                  Hemos seleccionado algunos detalles que serán parte del hogar
-                  y de la nueva etapa que comenzaremos juntos.
-                </p>
-
-                {/* NÚMERO DE EVENTO */}
-
-                <div
-                  className="
-                    mx-auto
-                    mt-10
-                    w-full
-                    max-w-md
-                    border-y
-                    px-5
-                    py-8
-                  "
-                  style={{
-                    borderColor: "rgba(164,134,84,0.32)",
-                  }}
-                >
-                  <p
-                    className="
-                      text-[8px]
-                      uppercase
-                      tracking-[0.38em]
-                      sm:text-[9px]
-                    "
-                    style={{
-                      color: palette.warmGray,
-                    }}
-                  >
-                    Número de evento
-                  </p>
-
-                  <p
-                    className="
-                      mt-4
-                      break-all
-                      font-serif
-                      text-[32px]
-                      tracking-[0.12em]
-                      sm:text-[40px]
-                      sm:tracking-[0.18em]
-                    "
-                    style={{
-                      color: palette.ink,
-                    }}
-                  >
-                    {numeroEvento}
-                  </p>
-                </div>
-
-                {/* BOTÓN LIVERPOOL */}
-
-                <motion.a
-                  href={linkLiverpool}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="
-                    mt-10
-                    inline-flex
-                    min-w-[230px]
-                    items-center
-                    justify-center
-                    gap-3
-                    border
-                    px-8
-                    py-4
-                    sm:min-w-[270px]
-                  "
-                  style={{
-                    backgroundColor: palette.ink,
-                    borderColor: palette.ink,
-                    color: palette.paperLight,
-                  }}
-                  whileHover={{
-                    y: -2,
-                    backgroundColor: palette.inkSoft,
-                  }}
-                  whileTap={{
-                    scale: 0.985,
-                  }}
-                >
-                  <ExternalLinkIcon />
-
-                  <span
-                    className="
-                      text-[9px]
-                      uppercase
-                      tracking-[0.28em]
-                      sm:text-[10px]
-                    "
-                  >
-                    Abrir mesa en Liverpool
-                  </span>
-                </motion.a>
-
-                <div className="mt-10">
-                  <DecorativeDivider compact />
-                </div>
-
-                <p
-                  className="
-                    mt-6
-                    max-w-lg
-                    font-serif
-                    text-[14px]
-                    italic
-                    leading-7
-                  "
-                  style={{
                     color: palette.inkSoft,
                   }}
                 >
-                  Gracias por acompañarnos y por formar parte de este nuevo
-                  capítulo de nuestra historia.
+                  Una frase que nos recuerda que algunas almas simplemente se
+                  reconocen.
                 </p>
               </div>
             </motion.div>
@@ -1090,6 +755,4 @@ const Regalos = () => {
       </AnimatePresence>
     </>
   );
-};
-
-export default Regalos;
+}

@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import Portada from './portada'
+import Portada from './componentes-encabezado/portada'
 import PaginaPrincipal from './PaginaPrincipal'
 import Generador from './pages/Generador'
 

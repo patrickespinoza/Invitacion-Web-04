@@ -1,8 +1,7 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 /* =========================================
-   CÓDIGO DE VESTIMENTA — CLÁSICO SIN IMÁGENES
+   ITINERARIO CLÁSICO EDITORIAL
 ========================================= */
 
 const palette = {
@@ -15,6 +14,33 @@ const palette = {
   antiqueGoldDark: "#725B37",
   warmGray: "#777168",
 };
+
+const events = [
+  {
+    time: "18:00",
+    title: "Ceremonia",
+    description: "Ceremonia civil con nuestros seres queridos.",
+    icon: "rings",
+  },
+  {
+    time: "19:30",
+    title: "Recepción",
+    description: "Bienvenida con cóctel y música en vivo.",
+    icon: "glass",
+  },
+  {
+    time: "21:00",
+    title: "Cena",
+    description: "Banquete con un menú especialmente diseñado.",
+    icon: "dinner",
+  },
+  {
+    time: "23:00",
+    title: "Fiesta",
+    description: "Una noche para bailar y celebrar juntos.",
+    icon: "music",
+  },
+];
 
 const fadeUp = {
   hidden: {
@@ -30,6 +56,64 @@ const fadeUp = {
     },
   },
 };
+
+/* =========================================
+   ICONOS
+========================================= */
+
+function EventIcon({ type }) {
+  const commonProps = {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.25",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    className: "h-5 w-5 sm:h-6 sm:w-6",
+    "aria-hidden": true,
+  };
+
+  if (type === "rings") {
+    return (
+      <svg {...commonProps}>
+        <circle cx="9" cy="12" r="5" />
+        <circle cx="15" cy="12" r="5" />
+        <path d="M12 5.5 14 3l2 2.5" />
+      </svg>
+    );
+  }
+
+  if (type === "glass") {
+    return (
+      <svg {...commonProps}>
+        <path d="M7 4h10l-1.2 7.2A4 4 0 0 1 12 14.5a4 4 0 0 1-3.8-3.3Z" />
+        <path d="M12 14.5V21" />
+        <path d="M8.5 21h7" />
+        <path d="M8.5 8h7" />
+      </svg>
+    );
+  }
+
+  if (type === "dinner") {
+    return (
+      <svg {...commonProps}>
+        <path d="M7 3v8" />
+        <path d="M4.5 3v5a2.5 2.5 0 0 0 5 0V3" />
+        <path d="M7 11v10" />
+        <path d="M16 3v18" />
+        <path d="M16 3c2.5 2 3.5 5.5 0 8" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg {...commonProps}>
+      <path d="M9 18V5l10-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="16" cy="16" r="3" />
+    </svg>
+  );
+}
 
 /* =========================================
    ORNAMENTO DE ESQUINA
@@ -141,14 +225,14 @@ function BotanicalBranch({ className = "" }) {
 }
 
 /* =========================================
-   SEPARADOR CLÁSICO
+   SEPARADOR
 ========================================= */
 
-function DecorativeDivider({ compact = false }) {
+function DecorativeDivider() {
   return (
     <div className="flex items-center justify-center gap-3">
       <span
-        className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
+        className="h-px w-10 sm:w-16"
         style={{
           background:
             "linear-gradient(to right, transparent, rgba(164,134,84,0.72))",
@@ -163,7 +247,7 @@ function DecorativeDivider({ compact = false }) {
       />
 
       <span
-        className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
+        className="h-px w-10 sm:w-16"
         style={{
           background:
             "linear-gradient(to left, transparent, rgba(164,134,84,0.72))",
@@ -174,114 +258,17 @@ function DecorativeDivider({ compact = false }) {
 }
 
 /* =========================================
-   ICONOS
+   EVENTO DE LA CRONOLOGÍA
 ========================================= */
 
-function SuitIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className="h-10 w-10 sm:h-12 sm:w-12"
-    >
-      <path d="M16 8 8 13v27h32V13l-8-5" />
-      <path d="m16 8 8 8 8-8" />
-      <path d="m19 13 5 7 5-7" />
-      <path d="M24 20v20" />
-      <path d="M16 8V4h16v4" />
-      <path d="M8 23h9" />
-      <path d="M31 23h9" />
-    </svg>
-  );
-}
+function TimelineEvent({ event, index, isLast }) {
+  const isEven = index % 2 === 0;
 
-function DressIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className="h-10 w-10 sm:h-12 sm:w-12"
-    >
-      <path d="M19 5h10" />
-      <path d="M20 5c0 6-2 10-5 14" />
-      <path d="M28 5c0 6 2 10 5 14" />
-      <path d="M15 19h18" />
-      <path d="m15 19-7 23h32l-7-23" />
-      <path d="M19 5c1 3 2.5 5 5 7 2.5-2 4-4 5-7" />
-      <path d="M16 27h16" />
-    </svg>
-  );
-}
-
-function AdultEventIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.25"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className="h-5 w-5"
-    >
-      <path d="M7 4h10" />
-      <path d="m8.5 4 1.2 6a4.3 4.3 0 0 0 8.5 0l1.2-6" />
-      <path d="M14 14v6" />
-      <path d="M10.5 20h7" />
-      <path d="M9.5 8h9" />
-    </svg>
-  );
-}
-
-/* =========================================
-   OPCIÓN DE VESTIMENTA
-========================================= */
-
-function DressOption({
-  title,
-  subtitle,
-  description,
-  details,
-  icon,
-  index,
-}) {
   return (
     <motion.article
-      className="
-        relative
-        flex
-        min-h-[390px]
-        w-full
-        flex-col
-        items-center
-        justify-center
-        border
-        px-7
-        py-12
-        text-center
-        sm:min-h-[430px]
-        sm:px-10
-        sm:py-14
-      "
-      style={{
-        backgroundColor: "rgba(251,249,244,0.76)",
-        borderColor: "rgba(164,134,84,0.3)",
-        boxShadow: "0 18px 45px rgba(29,39,51,0.06)",
-      }}
       initial={{
         opacity: 0,
-        y: 20,
+        y: 22,
       }}
       whileInView={{
         opacity: 1,
@@ -289,140 +276,255 @@ function DressOption({
       }}
       viewport={{
         once: true,
-        amount: 0.2,
+        amount: 0.25,
       }}
       transition={{
         duration: 0.85,
-        delay: 0.12 + index * 0.12,
+        delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
+      className="
+        relative
+        grid
+        grid-cols-[44px_1fr]
+        gap-5
+        sm:grid-cols-[58px_1fr]
+        sm:gap-7
+        lg:grid-cols-[1fr_80px_1fr]
+        lg:gap-10
+      "
     >
-      {/* BORDE INTERIOR */}
+      {/* LÍNEA VERTICAL EN MÓVIL */}
+
+      {!isLast && (
+        <div
+          className="
+            absolute
+            left-[21px]
+            top-11
+            h-[calc(100%+28px)]
+            w-px
+            sm:left-[28px]
+            lg:hidden
+          "
+          style={{
+            backgroundColor: "rgba(164,134,84,0.32)",
+          }}
+        />
+      )}
+
+      {/* CONTENIDO IZQUIERDO EN COMPUTADORA */}
 
       <div
-        className="
-          pointer-events-none
-          absolute
-          inset-[7px]
-          border
-        "
-        style={{
-          borderColor: "rgba(164,134,84,0.11)",
-        }}
-      />
-
-      {/* NÚMERO EDITORIAL */}
-
-      <p
-        className="
-          absolute
-          left-5
-          top-5
-          font-serif
-          text-xs
-          tracking-[0.2em]
-          sm:left-7
-          sm:top-7
-        "
-        style={{
-          color: "rgba(164,134,84,0.65)",
-        }}
+        className={`
+          hidden
+          lg:flex
+          lg:flex-col
+          lg:justify-center
+          ${isEven ? "lg:items-end lg:text-right" : "lg:invisible"}
+        `}
       >
-        {String(index + 1).padStart(2, "0")}
-      </p>
+        {isEven && (
+          <EventContent
+            event={event}
+            index={index}
+            alignment="right"
+          />
+        )}
+      </div>
 
-      {/* ICONO */}
+      {/* MARCADOR CENTRAL */}
 
       <div
         className="
+          relative
+          z-10
+          col-start-1
+          row-start-1
           flex
-          h-20
-          w-20
-          items-center
           justify-center
-          rounded-full
-          border
-          sm:h-24
-          sm:w-24
+          lg:col-start-2
         "
-        style={{
-          borderColor: "rgba(164,134,84,0.42)",
-          color: palette.antiqueGoldDark,
-        }}
       >
-        {icon}
+        <div
+          className="
+            flex
+            h-11
+            w-11
+            items-center
+            justify-center
+            rounded-full
+            border
+            bg-[#FBF9F4]
+            sm:h-14
+            sm:w-14
+          "
+          style={{
+            borderColor: "rgba(164,134,84,0.55)",
+            color: palette.antiqueGoldDark,
+            boxShadow: "0 7px 20px rgba(29,39,51,0.08)",
+          }}
+        >
+          <EventIcon type={event.icon} />
+        </div>
+
+        {!isLast && (
+          <div
+            className="
+              pointer-events-none
+              absolute
+              top-14
+              hidden
+              h-[calc(100%+50px)]
+              w-px
+              lg:block
+            "
+            style={{
+              backgroundColor: "rgba(164,134,84,0.32)",
+            }}
+          />
+        )}
       </div>
 
-      <div className="mt-8">
-        <DecorativeDivider compact />
-      </div>
+      {/* CONTENIDO MÓVIL Y DERECHO EN COMPUTADORA */}
 
-      <h3
-        className="
-          mt-7
-          font-serif
-          text-[31px]
-          font-normal
-          tracking-[-0.02em]
-          sm:text-[38px]
-        "
-        style={{
-          color: palette.ink,
-        }}
+      <div
+        className={`
+          col-start-2
+          row-start-1
+          pb-11
+          sm:pb-14
+          lg:col-start-3
+          lg:flex
+          lg:flex-col
+          lg:justify-center
+          ${isEven ? "lg:invisible" : "lg:items-start lg:text-left"}
+        `}
       >
-        {title}
-      </h3>
+        <div className="lg:hidden">
+          <EventContent
+            event={event}
+            index={index}
+            alignment="left"
+          />
+        </div>
 
+        {!isEven && (
+          <div className="hidden lg:block">
+            <EventContent
+              event={event}
+              index={index}
+              alignment="left"
+            />
+          </div>
+        )}
+      </div>
+    </motion.article>
+  );
+}
+
+/* =========================================
+   CONTENIDO DE CADA EVENTO
+========================================= */
+
+function EventContent({ event, index, alignment }) {
+  const isRight = alignment === "right";
+
+  return (
+    <div
+      className={`
+        w-full
+        max-w-md
+        ${isRight ? "lg:ml-auto" : "lg:mr-auto"}
+      `}
+    >
       <p
         className="
-          mt-3
           text-[8px]
           uppercase
-          tracking-[0.36em]
+          tracking-[0.34em]
           sm:text-[9px]
         "
         style={{
           color: palette.antiqueGoldDark,
         }}
       >
-        {subtitle}
+        Momento {String(index + 1).padStart(2, "0")}
       </p>
 
-      <p
-        className="
-          mx-auto
-          mt-6
-          max-w-sm
-          font-serif
-          text-[15px]
-          leading-7
-          sm:text-base
-        "
-        style={{
-          color: palette.inkSoft,
-        }}
+      <div
+        className={`
+          mt-3
+          flex
+          flex-col
+          gap-2
+          sm:flex-row
+          sm:items-baseline
+          sm:gap-4
+          ${
+            isRight
+              ? "sm:justify-start lg:flex-row-reverse lg:justify-start"
+              : "sm:justify-start"
+          }
+        `}
       >
-        {description}
-      </p>
+        <p
+          className="
+            font-serif
+            text-[33px]
+            leading-none
+            tracking-[-0.025em]
+            sm:text-[39px]
+          "
+          style={{
+            color: palette.ink,
+          }}
+        >
+          {event.time}
+        </p>
+
+        <span
+          className="
+            hidden
+            h-px
+            w-8
+            sm:block
+          "
+          style={{
+            backgroundColor: "rgba(164,134,84,0.55)",
+          }}
+        />
+
+        <h3
+          className="
+            font-serif
+            text-[24px]
+            font-normal
+            sm:text-[28px]
+          "
+          style={{
+            color: palette.inkSoft,
+          }}
+        >
+          {event.title}
+        </h3>
+      </div>
 
       <p
         className="
-          mx-auto
           mt-4
-          max-w-xs
           font-serif
-          text-[13px]
-          italic
-          leading-6
-          sm:text-[14px]
+          text-[14px]
+          leading-7
+          sm:text-[15px]
         "
         style={{
           color: palette.warmGray,
         }}
       >
-        {details}
+        {event.description}
       </p>
-    </motion.article>
+    </div>
   );
 }
 
@@ -430,7 +532,7 @@ function DressOption({
    COMPONENTE PRINCIPAL
 ========================================= */
 
-const DressCodePremium = () => {
+export default function ItinerarioRelojCentral() {
   return (
     <motion.section
       variants={fadeUp}
@@ -442,11 +544,7 @@ const DressCodePremium = () => {
       }}
       className="
         relative
-        flex
-        min-h-[760px]
         w-full
-        items-center
-        justify-center
         overflow-hidden
         px-5
         py-24
@@ -488,7 +586,7 @@ const DressCodePremium = () => {
         }}
       />
 
-      {/* MARCOS DE LA SECCIÓN */}
+      {/* MARCO GENERAL */}
 
       <div
         className="
@@ -518,7 +616,7 @@ const DressCodePremium = () => {
         }}
       />
 
-      {/* ORNAMENTOS DE ESQUINA */}
+      {/* ORNAMENTOS */}
 
       <CornerOrnament
         className="
@@ -587,8 +685,6 @@ const DressCodePremium = () => {
         "
       />
 
-      {/* DETALLES BOTÁNICOS */}
-
       <BotanicalBranch
         className="
           pointer-events-none
@@ -621,8 +717,6 @@ const DressCodePremium = () => {
         "
       />
 
-      {/* CONTENIDO */}
-
       <div
         className="
           relative
@@ -637,14 +731,14 @@ const DressCodePremium = () => {
         <motion.div
           className="
             mx-auto
-            mb-14
+            mb-16
             flex
             max-w-3xl
             flex-col
             items-center
             text-center
-            sm:mb-16
-            lg:mb-20
+            sm:mb-20
+            lg:mb-24
           "
           initial={{
             opacity: 0,
@@ -672,7 +766,7 @@ const DressCodePremium = () => {
               color: palette.antiqueGoldDark,
             }}
           >
-            Detalles de la celebración
+            Itinerario
           </p>
 
           <div className="mt-5">
@@ -683,7 +777,7 @@ const DressCodePremium = () => {
             className="
               mt-7
               font-serif
-              text-[39px]
+              text-[40px]
               font-normal
               leading-tight
               tracking-[-0.025em]
@@ -694,7 +788,7 @@ const DressCodePremium = () => {
               color: palette.ink,
             }}
           >
-            Código de vestimenta
+            El orden de nuestro día
           </h2>
 
           <p
@@ -712,58 +806,29 @@ const DressCodePremium = () => {
               color: palette.warmGray,
             }}
           >
-            Nos encantará verlos elegantes y acordes con la ocasión en este
-            día tan importante para nosotros.
+            Cada momento ha sido pensado para compartir, celebrar y guardar
+            juntos un recuerdo inolvidable.
           </p>
         </motion.div>
 
-        {/* OPCIONES */}
-
-        <div
-          className="
-            mx-auto
-            grid
-            max-w-5xl
-            gap-7
-            sm:gap-9
-            md:grid-cols-2
-          "
-        >
-          <DressOption
-            title="Caballeros"
-            subtitle="Vestimenta formal"
-            description="Traje formal en tonos oscuros acompañado de camisa, corbata y calzado elegante."
-            details="Sugerimos negro, azul marino, gris oscuro o tonalidades similares."
-            icon={<SuitIcon />}
-            index={0}
-          />
-
-          <DressOption
-            title="Damas"
-            subtitle="Vestimenta formal"
-            description="Vestido largo o atuendo de noche elegante, apropiado para una celebración formal."
-            details="Agradecemos reservar los colores demasiado claros para la novia."
-            icon={<DressIcon />}
-            index={1}
-          />
-        </div>
-
-        {/* NOTA DE ETIQUETA */}
+        {/* FECHA CENTRAL */}
 
         <motion.div
           className="
             mx-auto
-            mt-12
-            max-w-2xl
+            mb-14
+            flex
+            max-w-sm
+            flex-col
+            items-center
             border-y
             px-5
-            py-8
+            py-7
             text-center
-            sm:mt-16
-            sm:px-8
+            sm:mb-16
           "
           style={{
-            borderColor: "rgba(164,134,84,0.3)",
+            borderColor: "rgba(164,134,84,0.34)",
           }}
           initial={{
             opacity: 0,
@@ -775,8 +840,8 @@ const DressCodePremium = () => {
           }}
           viewport={{ once: true }}
           transition={{
-            duration: 0.85,
-            delay: 0.28,
+            duration: 0.9,
+            delay: 0.1,
           }}
         >
           <p
@@ -790,40 +855,66 @@ const DressCodePremium = () => {
               color: palette.antiqueGoldDark,
             }}
           >
-            Etiqueta formal
+            Nuestra celebración
           </p>
 
           <p
             className="
-              mx-auto
-              mt-4
-              max-w-lg
+              mt-3
               font-serif
-              text-[15px]
-              leading-7
-              sm:text-base
+              text-[42px]
+              leading-none
+              sm:text-[48px]
             "
             style={{
-              color: palette.inkSoft,
+              color: palette.ink,
             }}
           >
-            Elegante y acorde con la ocasión. Agradecemos evitar vestimenta
-            casual, mezclilla y calzado deportivo.
+            11
+          </p>
+
+          <p
+            className="
+              mt-2
+              text-[9px]
+              uppercase
+              tracking-[0.4em]
+              sm:text-[10px]
+            "
+            style={{
+              color: palette.warmGray,
+            }}
+          >
+            Junio
           </p>
         </motion.div>
 
-        {/* SOLO ADULTOS */}
+        {/* CRONOLOGÍA */}
+
+        <div className="mx-auto max-w-5xl">
+          {events.map((event, index) => (
+            <TimelineEvent
+              key={`${event.time}-${event.title}`}
+              event={event}
+              index={index}
+              isLast={index === events.length - 1}
+            />
+          ))}
+        </div>
+
+        {/* CIERRE */}
 
         <motion.div
           className="
             mx-auto
-            mt-12
+            mt-10
             flex
             max-w-xl
             flex-col
             items-center
             text-center
             sm:mt-14
+            lg:mt-16
           "
           initial={{
             opacity: 0,
@@ -835,78 +926,29 @@ const DressCodePremium = () => {
           }}
           viewport={{ once: true }}
           transition={{
-            duration: 0.85,
-            delay: 0.36,
+            duration: 0.9,
+            delay: 0.25,
           }}
         >
-          <div
-            className="
-              flex
-              h-11
-              w-11
-              items-center
-              justify-center
-              rounded-full
-              border
-            "
-            style={{
-              borderColor: "rgba(164,134,84,0.42)",
-              color: palette.antiqueGoldDark,
-            }}
-          >
-            <AdultEventIcon />
-          </div>
+          <DecorativeDivider />
 
           <p
             className="
-              mt-5
-              text-[8px]
-              uppercase
-              tracking-[0.4em]
-              sm:text-[9px]
-            "
-            style={{
-              color: palette.antiqueGoldDark,
-            }}
-          >
-            Consideración especial
-          </p>
-
-          <p
-            className="
-              mt-3
-              font-serif
-              text-[22px]
-              italic
-              sm:text-[26px]
-            "
-            style={{
-              color: palette.ink,
-            }}
-          >
-            Celebración exclusiva para adultos
-          </p>
-
-          <p
-            className="
-              mt-3
-              max-w-md
+              mt-6
               font-serif
               text-[14px]
+              italic
               leading-7
-              sm:text-[15px]
+              sm:text-base
             "
             style={{
               color: palette.warmGray,
             }}
           >
-            Deseamos que esta noche sea una oportunidad para celebrar,
-            conversar y disfrutar juntos.
+            Esperamos vivir cada momento contigo.
           </p>
         </motion.div>
       </div>
     </motion.section>
   );
-};
-
-export default DressCodePremium;
+}

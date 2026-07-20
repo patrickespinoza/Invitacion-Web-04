@@ -1,206 +1,508 @@
-"use client";
-
 import { motion } from "framer-motion";
 
-const fadeUp = {
+/* =========================================
+   FRASE EDITORIAL CLÁSICA
+========================================= */
+
+const palette = {
+  ink: "#1D2733",
+  inkSoft: "#39434D",
+  paper: "#F5F1E8",
+  paperLight: "#FBF9F4",
+  paperDark: "#E5DED2",
+  antiqueGold: "#A48654",
+  antiqueGoldDark: "#725B37",
+  warmGray: "#777168",
+  line: "#C9BEAC",
+};
+
+const reveal = {
   hidden: {
     opacity: 0,
-    y: 60,
+    y: 24,
   },
   show: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 1.2,
+      duration: 0.95,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
+function BotanicalDetail({ className = "" }) {
+  return (
+    <svg
+      viewBox="0 0 130 210"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <path
+        d="M66 203C70 158 70 112 65 17"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M66 164C49 153 39 139 34 121"
+        stroke="currentColor"
+        strokeWidth="0.8"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M66 139C82 128 92 113 96 94"
+        stroke="currentColor"
+        strokeWidth="0.8"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M65 103C50 92 42 79 39 64"
+        stroke="currentColor"
+        strokeWidth="0.8"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M65 76C80 66 87 52 89 38"
+        stroke="currentColor"
+        strokeWidth="0.8"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M34 121C44 120 52 126 57 137C46 137 38 132 34 121Z"
+        stroke="currentColor"
+        strokeWidth="0.7"
+      />
+
+      <path
+        d="M96 94C86 94 78 100 72 111C84 111 92 105 96 94Z"
+        stroke="currentColor"
+        strokeWidth="0.7"
+      />
+
+      <path
+        d="M39 64C49 65 57 71 61 82C50 81 42 75 39 64Z"
+        stroke="currentColor"
+        strokeWidth="0.7"
+      />
+
+      <path
+        d="M89 38C80 39 73 45 68 55C79 54 86 49 89 38Z"
+        stroke="currentColor"
+        strokeWidth="0.7"
+      />
+
+      <circle
+        cx="65"
+        cy="16"
+        r="3"
+        stroke="currentColor"
+        strokeWidth="0.7"
+      />
+    </svg>
+  );
+}
+
+function SmallDivider() {
+  return (
+    <div className="flex items-center justify-center gap-3">
+      <span
+        className="h-px w-10 sm:w-14"
+        style={{
+          background:
+            "linear-gradient(to right, transparent, rgba(164,134,84,0.72))",
+        }}
+      />
+
+      <span
+        className="h-[5px] w-[5px] rotate-45 border"
+        style={{
+          borderColor: "rgba(164,134,84,0.72)",
+        }}
+      />
+
+      <span
+        className="h-px w-10 sm:w-14"
+        style={{
+          background:
+            "linear-gradient(to left, transparent, rgba(164,134,84,0.72))",
+        }}
+      />
+    </div>
+  );
+}
+
 export default function FrasePremium() {
   return (
-    <motion.div
-      variants={fadeUp}
+    <motion.section
+      variants={reveal}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true }}
-      className="relative flex flex-col items-center justify-center py-32 px-6 text-center overflow-hidden"
+      viewport={{
+        once: true,
+        amount: 0.18,
+      }}
+      className="
+        relative
+        flex
+        min-h-[620px]
+        w-full
+        items-center
+        justify-center
+        overflow-hidden
+        px-5
+        py-24
+        text-center
+        sm:min-h-[700px]
+        sm:px-8
+        sm:py-28
+        lg:min-h-[680px]
+        lg:px-12
+        lg:py-32
+      "
       style={{
         background: `
-          radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 20%),
-          radial-gradient(circle at bottom right, rgba(255,255,255,0.04), transparent 25%),
           linear-gradient(
-            145deg,
-            #3a1f1f 0%,
-            #241212 40%,
-            #120909 100%
+            180deg,
+            ${palette.paperLight} 0%,
+            ${palette.paper} 55%,
+            ${palette.paperDark} 100%
           )
         `,
       }}
     >
+      {/* TEXTURA DE PAPEL */}
 
-      {/* PARTÍCULAS GLOW */}
-      <motion.div
-        className="absolute w-[420px] h-[420px] rounded-full blur-3xl opacity-20"
-        style={{
-          background: "rgba(212,175,55,0.25)",
-          top: "-120px",
-          left: "-120px",
-        }}
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.18, 0.28, 0.18],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      <motion.div
-        className="absolute w-[320px] h-[320px] rounded-full blur-3xl opacity-10"
-        style={{
-          background: "rgba(255,255,255,0.15)",
-          bottom: "-80px",
-          right: "-80px",
-        }}
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.08, 0.16, 0.08],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      {/* TEXTURA */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          opacity-[0.16]
+        "
         style={{
           backgroundImage: `
             repeating-linear-gradient(
-              45deg,
-              rgba(255,255,255,0.12) 0px,
-              rgba(255,255,255,0.12) 1px,
+              0deg,
+              rgba(29,39,51,0.025) 0px,
+              rgba(29,39,51,0.025) 1px,
               transparent 1px,
-              transparent 6px
+              transparent 5px
             )
           `,
         }}
       />
 
-      {/* BORDE SUPERIOR */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
+      {/* MARCO EXTERIOR */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-5
+          border
+          sm:inset-8
+          lg:inset-10
+        "
+        style={{
+          borderColor: "rgba(164,134,84,0.26)",
+        }}
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-[26px]
+          border
+          sm:inset-[38px]
+          lg:inset-[46px]
+        "
+        style={{
+          borderColor: "rgba(164,134,84,0.1)",
+        }}
+      />
+
+      {/* DETALLES BOTÁNICOS */}
+
+      <BotanicalDetail
+        className="
+          pointer-events-none
+          absolute
+          -bottom-8
+          -left-5
+          h-[210px]
+          w-[130px]
+          -rotate-12
+          text-[#A48654]/20
+          sm:-left-1
+          sm:h-[260px]
+          sm:w-[160px]
+          lg:left-8
+          lg:h-[310px]
+          lg:w-[190px]
+        "
+      />
+
+      <BotanicalDetail
+        className="
+          pointer-events-none
+          absolute
+          -right-5
+          -top-10
+          h-[210px]
+          w-[130px]
+          rotate-[168deg]
+          text-[#A48654]/20
+          sm:-right-1
+          sm:h-[260px]
+          sm:w-[160px]
+          lg:right-8
+          lg:h-[310px]
+          lg:w-[190px]
+        "
+      />
 
       {/* CONTENIDO */}
-      <div className="relative z-10 max-w-4xl">
 
-        {/* COMILLAS */}
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          flex
+          w-full
+          max-w-5xl
+          flex-col
+          items-center
+        "
+      >
+        {/* ETIQUETA */}
+
         <motion.div
-          className="mb-6"
-          animate={{
-            opacity: [0.6, 1, 0.6],
-            y: [0, -4, 0],
+          initial={{
+            opacity: 0,
+            y: -10,
           }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
           transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
           }}
         >
-          <span
-            className="text-[70px] md:text-[90px] leading-none"
+          <p
+            className="
+              text-[8px]
+              uppercase
+              tracking-[0.42em]
+              sm:text-[10px]
+              sm:tracking-[0.52em]
+            "
             style={{
-              color: "rgba(212,175,55,0.22)",
-              fontFamily: "serif",
+              color: palette.antiqueGoldDark,
             }}
           >
-            “
-          </span>
+            Una historia de amor
+          </p>
+
+          <div className="mt-5">
+            <SmallDivider />
+          </div>
         </motion.div>
 
-        {/* FRASE */}
-        <motion.p
-          className="text-[24px] sm:text-[32px] md:text-[42px] leading-relaxed font-light"
+        {/* COMILLA */}
+
+        <motion.span
+          className="
+            mt-8
+            block
+            font-serif
+            text-[68px]
+            font-light
+            leading-[0.65]
+            sm:mt-10
+            sm:text-[86px]
+          "
           style={{
-            background: `
-              linear-gradient(
-                180deg,
-                #fffdf8 0%,
-                #f4dfb8 35%,
-                #d4af37 65%,
-                #8f6b1d 100%
-              )
-            `,
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            textShadow: `
-              0 2px 10px rgba(212,175,55,0.08),
-              0 8px 30px rgba(0,0,0,0.2)
-            `,
+            color: "rgba(164,134,84,0.28)",
           }}
-          animate={{
-            opacity: [0.9, 1, 0.9],
+          initial={{
+            opacity: 0,
+            y: 12,
           }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
           transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
+            duration: 0.9,
+            delay: 0.12,
+          }}
+        >
+          “
+        </motion.span>
+
+        {/* FRASE */}
+
+        <motion.blockquote
+          className="
+            mx-auto
+            mt-3
+            max-w-4xl
+            font-serif
+            text-[26px]
+            font-normal
+            leading-[1.55]
+            tracking-[-0.015em]
+            sm:text-[35px]
+            sm:leading-[1.5]
+            md:text-[41px]
+            lg:text-[46px]
+            lg:leading-[1.42]
+          "
+          style={{
+            color: palette.ink,
+          }}
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 1,
+            delay: 0.18,
+            ease: [0.22, 1, 0.36, 1],
           }}
         >
           Te quiero no por quien eres,
-          <br />
-          sino por quien soy
-          <br />
-          cuando estoy contigo.
-        </motion.p>
+          <span className="block">
+            sino por quien soy
+          </span>
+          <span className="block">
+            cuando estoy contigo.
+          </span>
+        </motion.blockquote>
 
-        {/* LÍNEA ELEGANTE */}
+        {/* SEPARADOR */}
+
         <motion.div
-          className="w-32 h-[1px] mx-auto my-10"
-          style={{
-            background:
-              "linear-gradient(to right, transparent, rgba(212,175,55,0.7), transparent)",
+          className="
+            my-9
+            sm:my-11
+          "
+          initial={{
+            opacity: 0,
+            scaleX: 0.65,
           }}
-          animate={{
-            width: ["90px", "130px", "90px"],
-            opacity: [0.5, 1, 0.5],
+          whileInView={{
+            opacity: 1,
+            scaleX: 1,
           }}
+          viewport={{ once: true }}
           transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
+            duration: 0.9,
+            delay: 0.32,
           }}
-        />
+        >
+          <SmallDivider />
+        </motion.div>
 
         {/* AUTOR */}
+
         <motion.p
-          className="text-[11px] md:text-[13px] uppercase tracking-[0.5em]"
+          className="
+            text-[9px]
+            uppercase
+            tracking-[0.28em]
+            sm:text-[11px]
+            sm:tracking-[0.4em]
+          "
           style={{
-            color: "#c8a96b",
-            textShadow: "0 2px 10px rgba(0,0,0,0.35)",
+            color: palette.warmGray,
           }}
-          animate={{
-            letterSpacing: ["0.45em", "0.55em", "0.45em"],
-            opacity: [0.7, 1, 0.7],
+          initial={{
+            opacity: 0,
+            y: 10,
           }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
           transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
+            duration: 0.85,
+            delay: 0.4,
           }}
         >
           Gabriel García Márquez
         </motion.p>
 
+        {/* CIERRE NARRATIVO */}
+
+        <motion.div
+          className="
+            mt-12
+            max-w-lg
+            sm:mt-14
+          "
+          initial={{
+            opacity: 0,
+            y: 12,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.9,
+            delay: 0.5,
+          }}
+        >
+          <div
+            className="
+              mx-auto
+              mb-6
+              h-px
+              w-16
+            "
+            style={{
+              backgroundColor: "rgba(164,134,84,0.48)",
+            }}
+          />
+
+          <p
+            className="
+              font-serif
+              text-[14px]
+              italic
+              leading-7
+              sm:text-base
+            "
+            style={{
+              color: palette.inkSoft,
+            }}
+          >
+            Desde que nuestros caminos se encontraron, aprendimos que el amor
+            también se construye en los pequeños momentos.
+          </p>
+        </motion.div>
       </div>
-
-      {/* BORDE INFERIOR */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/30 to-transparent" />
-
-    </motion.div>
+    </motion.section>
   );
 }
